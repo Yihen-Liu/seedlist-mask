@@ -7,8 +7,8 @@ async function main() {
     const signer = accounts[0];
 
     const MaskContract = await hre.ethers.getContractFactory("RandomMask");
-    const keyspace_addr = "0xd7681B69C80d125dB1214884B667464675AC21e5";
-    const mask_addr = "0xCA9cCb0305Cea7Fb2ca076FE282606376C05DfBF";
+    const keyspace_addr = "0xd700a119D906e8e48f868F01865741Aca2718A17";
+    const mask_addr = "0x988721B1350D549c2478664FAB3eCD5522A19908";
     const mask = new hre.ethers.Contract(mask_addr, MaskContract.interface, signer)
 
     let transactionResponse = await mask.addMinter(keyspace_addr);

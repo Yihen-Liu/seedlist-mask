@@ -23,9 +23,7 @@ contract RandomMask is ERC721URIStorage,Owned{
 
     event CreateUnfinishedRandomSVG(uint256 indexed tokenId, uint256 randomNumber);
     event CreatedRandomSVG(uint256 indexed tokenId, string tokenURI);
-    
-    
-    
+
     constructor() ERC721 ("Seedlist CryptoMask", "GenesisMask") {
             tokenCounter = 0;
             maxNumberofPaths= 10;
@@ -187,7 +185,7 @@ contract RandomMask is ERC721URIStorage,Owned{
 
     function bytes32ToUint256(bytes32 x) public pure returns (uint256) {
         uint256 y;
-        for (uint256 i = 0; i < 32; i++) {
+        for (uint8 i = 0; i < 32; i++) {
             uint256 c = (uint256(x) >> (i * 8)) & 0xff;
             if (48 <= c && c <= 57)
                 y += (c - 48) * 10 ** i;
@@ -195,7 +193,7 @@ contract RandomMask is ERC721URIStorage,Owned{
                 y += (c - 65 + 10) * 10 ** i;
             else if (97 <= c && c <= 122)
                 y += (c - 97 + 10) * 10 ** i;
-            break;
+            else break;
         }
         return y;
     }
