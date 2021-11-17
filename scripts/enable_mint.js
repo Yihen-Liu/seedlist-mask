@@ -7,13 +7,13 @@ async function main() {
     const signer = accounts[0];
 
     const MaskContract = await hre.ethers.getContractFactory("RandomMask");
-    const keyspace_addr = "0xd700a119D906e8e48f868F01865741Aca2718A17";
-    const mask_addr = "0x988721B1350D549c2478664FAB3eCD5522A19908";
+    const encrypt_machine = "0x6d89587672fb830A6B9Fb66E665528A38779e4c1";
+    const mask_addr = "0x96EAE123Ea4439D443042bD8699DE32a5940Ad5D";
     const mask = new hre.ethers.Contract(mask_addr, MaskContract.interface, signer)
 
-    let transactionResponse = await mask.addMinter(keyspace_addr);
+    let transactionResponse = await mask.addMinter(encrypt_machine);
     let receipt = await transactionResponse.wait(1);
-    console.log("enable keyspace mint nft ability successed.");
+    console.log("enable encrypt machine mint nft ability successed.");
 }
 
 // We recommend this pattern to be able to use async/await everywhere
